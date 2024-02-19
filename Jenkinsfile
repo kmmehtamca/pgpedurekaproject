@@ -41,6 +41,19 @@ pipeline {
                 sh '/opt//maven/bin/mvn package'
             }
         }
+
+
+stage('Build Docker Image') {
+            steps {
+                script {
+                    // Assuming your Dockerfile is located at the root of your project directory
+                    //Define the directory path you want to change to
+                 
+                              sh 'docker build --no-cache -t pgpedurekaproject1:V1 .'
+
+                }
+            }
+        }
         
     }
 }
