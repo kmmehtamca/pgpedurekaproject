@@ -45,11 +45,6 @@ pipeline {
 
 stage('Build Docker Image') {
 
-
-		agent
-		{
-			label 'master'
-		}
             steps {
 		
                 script {
