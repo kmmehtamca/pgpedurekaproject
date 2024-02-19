@@ -44,7 +44,14 @@ pipeline {
 
 
 stage('Build Docker Image') {
+
+
+		agent
+		{
+			label 'master'
+		}
             steps {
+		
                 script {
                     // Assuming your Dockerfile is located at the root of your project directory
                     //Define the directory path you want to change to
