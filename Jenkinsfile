@@ -5,6 +5,14 @@ pipeline {
         
     }
 
+environment {
+       		 DOCKER_HUB_USERNAME = credentials('helloworl977')
+       		 DOCKER_HUB_PASSWORD = credentials('Pass12345')
+        	 DOCKER_IMAGE_NAME = 'pgpedurekaproject1'
+       		 DOCKER_IMAGE_TAG = 'V1' // or any other tag you want to use
+ 	}
+
+
     stages {
         stage('Checkout') {
                         environment {
@@ -56,6 +64,23 @@ stage('Build Docker Image') {
                 }
             }
         }
-        
+      
+
+        stage('Push Docker image to Docker Hub') {
+            steps {
+                script {
+                    // Authenticate with Docker Hub
+                    docker.withRegistry('https://index.docker.io/v1/', "${env.DOCKER_HUB_USERNAME}", "${env.DOCKER_HUB_PASSWORD}") {
+                        // Push the Docker image to Docker Hub
+                        docker.image("${env.DOCKER_IMAGE_NAME}:${env.DOCKER_IMAGE_TAG}").push()
+		   }
+		}
+	}
+	
+	}
+
+
+
+  
     }
 }
