@@ -56,13 +56,25 @@ pipeline {
           //  steps {
             //    script {
                     // Authenticate with Docker Hub
+
+		withCredentials([usernamePassword(credentialsId: 'Dockerhub_password', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+		// Login to Docker registry
+                        sh "docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}"
+                        
+                        // Build and push Docker image
+                       // sh "docker build -t ${env.DOCKER_REGISTRY}/your-image-name ."
+                        //sh "docker push ${env.DOCKER_REGISTRY}/your-image-name"
+
+		       // Logout from Docker registry
+                        sh "docker logout"
+
               //      docker.withRegistry('https://index.docker.io/v1/', "${env.DOCKER_HUB_USERNAME}", "${env.DOCKER_HUB_PASSWORD}") {
                         // Push the Docker image to Docker Hub
-//                        docker.image("${env.DOCKER_IMAGE_NAME}:${env.DOCKER_IMAGE_TAG}").push()
-  //                  }
-    //            }
-      //      }
-        //}
+                        //docker.image("${env.DOCKER_IMAGE_NAME}:${env.DOCKER_IMAGE_TAG}").push()
+                    }
+                }
+            }
+        }
     }
 }
 
