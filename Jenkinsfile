@@ -21,7 +21,7 @@ pipeline {
                 // Checkout source code from version control
                 checkout([$class: 'GitSCM',
                     branches: [[name: "${BRANCH_NAME}"]],
-                    userRemoteConfigs: [[url: 'https://github.com/kmmehtamca/edjava.git']]])
+                    userRemoteConfigs: [[url: 'https://github.com/kmmehtamca/pgpedurekaproject.git']]])
             }
         }
         stage('Compile') {
