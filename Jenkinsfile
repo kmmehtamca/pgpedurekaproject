@@ -6,7 +6,7 @@ pipeline {
     }
 
 environment {
-       		 DOCKER_HUB_USERNAME = credentials('helloworl977')
+       		 DOCKER_HUB_USERNAME = credentials('hellowordl977')
        		 DOCKER_HUB_PASSWORD = credentials('Pass12345')
         	 DOCKER_IMAGE_NAME = 'pgpedurekaproject1'
        		 DOCKER_IMAGE_TAG = 'V1' // or any other tag you want to use
