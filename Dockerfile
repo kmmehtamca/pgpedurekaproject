@@ -2,29 +2,23 @@
 FROM ubuntu:20.04
 
 # Install software-properties-common package required for add-apt-repository
-#  RUN apt-get update && \
- #   apt-get install -y software-properties-common && \
- #   apt-get clean
-
+ RUN apt-get update && \
+ apt-get install -y software-properties-common && \
+ apt-get clean
+ 
 # Add the OpenJDK PPA repository
-#RUN add-apt-repository ppa:openjdk-r/ppa
-
-# Update package lists
-#RUN apt-get update
-
+RUN add-apt-repository ppa:openjdk-r/ppa
 # Install fontconfig, OpenJDK 17 JRE, and OpenJDK 17 JDK
-#RUN apt-get update && \
- # apt-get install -y fontconfig openjdk-11-jre openjdk-11-jdk
+RUN apt-get update && \
+ apt-get install -y fontconfig openjdk-17-jre openjdk-17-jdk
+RUN apt-get clean
 
 # Clean up package cache
 #RUN apt-get clean
-
-RUN apt-get update
 #RUN apt-get install -f
 #RUN apt-cache search openjdk17
-#RUN apt-get install wget -y  
-RUN apt-get install openjdk-17-jdk -y
-RUN rm -rf /var/lib/apt/lists/*
+#RUN apt-get install wget -y
+
 
 # Optionally, set environment variables if needed
 # ENV JAVA_HOME /usr/lib/jvm/java-17-openjdk-amd64
