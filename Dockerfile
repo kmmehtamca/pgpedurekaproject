@@ -1,24 +1,20 @@
 # Use Ubuntu as the base image
 FROM ubuntu:20.04
 
-# Update packages and install necessary tools
-  RUN apt-get update && \
-    apt-get install -y wget && \
-    apt-get clean
-
 # Install software-properties-common package required for add-apt-repository
-RUN apt-get update && \
-    apt-get install -y software-properties-common && \
-    apt-get clean
+#  RUN apt-get update && \
+ #   apt-get install -y software-properties-common && \
+ #   apt-get clean
 
 # Add the OpenJDK PPA repository
-RUN add-apt-repository ppa:openjdk-r/ppa
+#RUN add-apt-repository ppa:openjdk-r/ppa
 
 # Update package lists
-RUN apt-get update
+#RUN apt-get update
 
 # Install fontconfig, OpenJDK 17 JRE, and OpenJDK 17 JDK
-RUN apt-get install -y fontconfig openjdk-17-jre openjdk-17-jdk
+RUN apt-get update && \
+  apt-get install -y fontconfig openjdk-17-jre openjdk-17-jdk
 
 # Clean up package cache
 RUN apt-get clean
