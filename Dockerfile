@@ -20,10 +20,10 @@ FROM ubuntu:20.04
 #RUN apt-get clean
 
 RUN apt-get update
-RUN apt-get install -f
-RUN apt-cache search openjdk11
+#RUN apt-get install -f
+#RUN apt-cache search openjdk17
 RUN apt-get install wget -y  
-RUN apt-get install openjdk-11-jdk -y
+RUN apt-get install openjdk-17-jdk -y
 RUN rm -rf /var/lib/apt/lists/*
 
 # Optionally, set environment variables if needed
