@@ -43,8 +43,8 @@ pipeline {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'Dockerhub_password', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                         sh "docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}"
-                        sh 'docker tag pgpedurekaproject1:latest} helloworld1977/helloworld:kapilproject1'
-                        sh 'docker push helloworld1977/helloworld:kapilproject1}'
+                        sh 'docker tag pgpedurekaproject1:latest helloworld1977/helloworld:kapilproject1'
+                        sh 'docker push helloworld1977/helloworld:kapilproject}'
                     
                         sh "docker logout"
                     }
