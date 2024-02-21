@@ -21,7 +21,7 @@ FROM ubuntu:20.04
 
 RUN apt-get update 
 RUN apt-get install wget -y  
-RUN apt-get installopenjdk-17-jdk -y
+RUN apt-get install openjdk-17-jdk -y
 RUN rm -rf /var/lib/apt/lists/*
 
 # Optionally, set environment variables if needed
