@@ -13,11 +13,17 @@ FROM ubuntu:20.04
 #RUN apt-get update
 
 # Install fontconfig, OpenJDK 17 JRE, and OpenJDK 17 JDK
-RUN apt-get update && \
-  apt-get install -y fontconfig openjdk-17-jre openjdk-17-jdk
+#RUN apt-get update && \
+ # apt-get install -y fontconfig openjdk-17-jre openjdk-17-jdk
 
 # Clean up package cache
-RUN apt-get clean
+#RUN apt-get clean
+
+RUN apt-get update && \
+    apt-get install -y \
+    wget \
+    openjdk-17-jdk \
+    && rm -rf /var/lib/apt/lists/*
 
 # Optionally, set environment variables if needed
 # ENV JAVA_HOME /usr/lib/jvm/java-17-openjdk-amd64
