@@ -41,7 +41,7 @@ pipeline {
         stage('Push Docker image to Docker Hub') {
             steps {
                 script {
-                    sh 'ansible-playbook -i inventory dockerc.yml'
+                    sh 'ansible-playbook  dockerc.yml'
                 }
             }
         }
