@@ -31,13 +31,7 @@ pipeline {
                 sh '/opt/maven/bin/mvn package'
             }
         }
-        stage('Build Docker Image') {
-            steps {
-                script {
-                    sh "docker build --no-cache -t pgpedurekaproject1:latest ."
-                }
-            }
-        }
+        
         stage('Push Docker image to Docker Hub') {
             steps {
                 script {
