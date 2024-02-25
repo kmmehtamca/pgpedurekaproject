@@ -1,6 +1,6 @@
 - name: Build Docker image
-  become_user:ansible
   become: yes
+  become_user: ansible
   hosts: docker_hosts
 
   vars:
