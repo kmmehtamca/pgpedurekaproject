@@ -1,0 +1,15 @@
+- name: Build Docker image
+  become: yes
+  hosts: docker_hosts
+
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  tasks:
+    - name: Build Docker image from Dockerfile
+      docker_image:
+        name: kapilproject2:latest
+        source: build
+        build:
+          pull: no
+          path: /home/jagenthome/workspace/JenkinsCICD
+          dockerfile: Dockerfile
