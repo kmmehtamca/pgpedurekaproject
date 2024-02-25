@@ -1,9 +1,12 @@
 - name: Build Docker image
   become_user: ansible
+  become: yes
   hosts: docker_hosts
 
   vars:
+    ansible_user: ansible  # Specify the SSH user
     ansible_python_interpreter: /usr/bin/python3
+
   tasks:
     - name: Build Docker image from Dockerfile
       docker_image:
@@ -13,3 +16,4 @@
           pull: no
           path: /home/jagenthome/workspace/JenkinsCICD
           dockerfile: Dockerfile
+
