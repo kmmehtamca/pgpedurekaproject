@@ -8,6 +8,14 @@ pipeline {
     }
 
     stages {
+        stage('Print User') {
+            steps {
+                script {
+                    sh 'whoami'
+                }
+            }
+        }
+    stages {
         stage('Checkout') {
             steps {
                 checkout([$class: 'GitSCM',
