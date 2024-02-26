@@ -15,7 +15,6 @@ pipeline {
                 }
             }
         }
-    stages {
         stage('Checkout') {
             steps {
                 checkout([$class: 'GitSCM',
@@ -39,11 +38,10 @@ pipeline {
                 sh '/opt/maven/bin/mvn package'
             }
         }
-        
         stage('Push Docker image to Docker Hub') {
             steps {
                 script {
-                    sh 'ansible-playbook  dockerc.yml'
+                    sh 'ansible-playbook dockerc.yml'
                 }
             }
         }
