@@ -30,10 +30,11 @@ ENV PATH $CATALINA_HOME/bin:$PATH
 
 # Download and extract Apache Tomcat
 WORKDIR /tmp
-ADD https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.18/bin/apache-tomcat-10.1.18.tar.gz /tmp
-RUN tar -xf apache-tomcat-10.1.18.tar.gz && \
-    mv apache-tomcat-10.1.18 $CATALINA_HOME && \
-    rm apache-tomcat-10.1.18.tar.gz
+ADD https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.19/bin/apache-tomcat-10.1.19.tar.gz /tmp
+
+RUN tar -xf apache-tomcat-10.1.19.tar.gz && \
+    mv apache-tomcat-10.1.19 $CATALINA_HOME && \
+    rm apache-tomcat-10.1.19.tar.gz
 
 # Copy the WAR file to the webapps directory
 #COPY target/ABCtechnologies-1.0.war  $CATALINA_HOME/webapps/
