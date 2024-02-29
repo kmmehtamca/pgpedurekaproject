@@ -27,4 +27,4 @@
         source: image
 
     - name: Log out from Docker Hub
-      docker_logout:
+      command: docker logout
