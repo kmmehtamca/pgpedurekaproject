@@ -39,6 +39,14 @@ pipeline {
                 sh '/opt/maven/bin/mvn package'
             }
         }
+        stage('Print IP Address') {
+            steps {
+                script {
+                    // Execute shell command to get IP address
+                    def ipAddress = sh(script: 'hostname -I | cut -d" " -f1', returnStdout: true).trim()
+                    echo "IP Address of the host: ${ipAddress}"
+                }
+            }
         stage('Push Docker image to Docker Hub') {
             steps {
                 script {
