@@ -1,0 +1,70 @@
+---
+- name: Build and Push Docker image
+  remote_user: ansible
+  become: true
+  hosts: docker_hosts
+
+  tasks:
+    - name: Build Docker image from Dockerfile
+      docker_image:
+        name: kapilproject2
+        tag: latest
+        source: build
+        build:
+          pull: no
+          path: /home/jagenthome/workspace/jenkinscicd
+          dockerfile: Dockerfile
+      register: build_result
+
+    - name: Debug output for build result
+      debug:
+        var: build_result
+
+    - name: Login into Docker Hub
+      docker_login:
+        username: kapcareer@gmail.com
+        password: pass12345
+      register: login_result
+
+    - name: Debug output for login result
+      debug:
+        var: login_result
+
+    - name: Tag Docker image
+      command: docker tag kapilproject2:latest helloworld1977/helloworld:kapilproject3
+      register: tag_result
+
+    - name: Debug output for tag result
+      debug:
+        var: tag_result
+    - name: Push Docker image to Docker Hub
+      docker_image:
+        name: helloworld1977/helloworld
+        tag: kapilproject3
+          push: yes
+        source: local
+      register: push_result
+
+    - name: Debug output for push result
+      debug:
+        var: push_result
+
+
+    - name: Pull Docker image from Docker Hub
+      docker_image:
+        name: helloworld1977/helloworld
+        tag: kapilproject2
+        #new_name: rishik:latest
+        source: pull
+      register: pull_result
+    - name: Debug output for pull result
+      debug:
+        var: pull_result
+
+    - name: log out from the docker hub
+      command: docker logout
+      register: logout_result
+    - name: Debug output for push result
+      debug:
+        var: logout_result
+
