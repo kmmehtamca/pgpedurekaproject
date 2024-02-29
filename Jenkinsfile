@@ -45,7 +45,7 @@ pipeline {
                    // sh 'ansible-playbook -u ansible dockerc.yml'
                     withCredentials([sshUserPrivateKey(credentialsId: 'ansible', keyFileVariable: 'SSH_PRIVATE_KEY')]) {
                         sh '''
-                            ansible-playbook -i  dockerc.yml --private-key=${SSH_PRIVATE_KEY} 
+                            ansible-playbook -u ansible dockerc.yml --private-key=${SSH_PRIVATE_KEY} 
                         '''
                 }
             }
