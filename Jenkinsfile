@@ -25,18 +25,18 @@ pipeline {
         }
         stage('Compile') {
             steps {
-                sh 'opt/maven/bin/mvn clean'
-                sh 'opt/maven/bin/mvn compile'
+                sh '/opt/maven/bin/mvn clean'
+                sh '/opt/maven/bin/mvn compile'
             }
         }
         stage('Test') {
             steps {
-                sh 'opt/maven/bin/mvn test'
+                sh '/opt/maven/bin/mvn test'
             }
         }
         stage('Package') {
             steps {
-                sh 'opt/maven/bin/mvn package'
+                sh '/opt/maven/bin/mvn package'
             }
         }
         stage('Push Docker image to Docker Hub') {
