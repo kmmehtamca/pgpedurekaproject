@@ -15,9 +15,15 @@
           dockerfile: Dockerfile
 
     - name: Login into the docker hub
-      docker_login:
+      docker_image:
         username: kapcareer@gmail.com
         password: pass12345
+    - name: Build Docker image from Dockerfile
+      docker_image:
+        name: helloworld1977/helloworld
+        tag : kapilproject2:latest
+        source: image
+        
 
     - name: log out from the docker
       command: docker logout
