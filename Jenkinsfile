@@ -42,11 +42,11 @@ pipeline {
         stage('Push Docker image to Docker Hub') {
             steps {
                 script {
-                   // sh 'ansible-playbook -u ansible dockerc.yml'
                     withCredentials([sshUserPrivateKey(credentialsId: 'ansible', keyFileVariable: 'SSH_PRIVATE_KEY')]) {
                         sh '''
                             ansible-playbook -u ansible dockerc.yml --private-key=${SSH_PRIVATE_KEY} 
                         '''
+                    }
                 }
             }
         }
