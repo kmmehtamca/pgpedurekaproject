@@ -1,0 +1,25 @@
+- name: Build Docker image
+  remote_user: ansible
+  become: true
+  hosts: docker_hosts
+
+  vars:
+    ansible_user: ansible  # Specify the SSH user
+    ansible_python_interpreter: /usr/bin/python3
+
+  tasks:
+    - name: Build Docker image from Dockerfile
+      docker_image:
+        name: kapilproject2:latest
+        source: build
+        build:
+          pull: no
+          path: /home/jagenthome/workspace/jenkinscicd
+          dockerfile: Dockerfile
+    - name: Login into the docker hub
+      docker_login:
+        username: kapcareer@gmail.com
+        password: pass12345
+    - name: log out from the docker
+      docker_logout:
+        username: kapcareer@gmail.com
