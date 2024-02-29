@@ -5,6 +5,7 @@ pipeline {
 
     environment {
         BRANCH_NAME = 'main'
+        SSH_CREDENTIALS = credentials('ansible')
     }
 
     stages {
@@ -41,7 +42,11 @@ pipeline {
         stage('Push Docker image to Docker Hub') {
             steps {
                 script {
-                    sh 'ansible-playbook -u ansible dockerc.yml'
+                   // sh 'ansible-playbook -u ansible dockerc.yml'
+                    withCredentials([sshUserPrivateKey(credentialsId: 'ansible', keyFileVariable: 'SSH_PRIVATE_KEY')]) {
+                        sh '''
+                            ansible-playbook -i  dockerc.yml --private-key=${SSH_PRIVATE_KEY} 
+                        '''
                 }
             }
         }
