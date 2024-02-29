@@ -41,7 +41,7 @@
       docker_image:
         name: helloworld1977/helloworld
         tag: kapilproject3
-          push: yes
+        push: yes
         source: local
       register: push_result
 
