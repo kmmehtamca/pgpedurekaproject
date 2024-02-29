@@ -47,6 +47,7 @@ pipeline {
                     echo "IP Address of the host: ${ipAddress}"
                 }
             }
+        }
         stage('Push Docker image to Docker Hub') {
             steps {
                 script {
