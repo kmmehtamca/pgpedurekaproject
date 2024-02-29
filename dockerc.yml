@@ -20,5 +20,5 @@
         password: pass12345
 
     - name: log out from the docker
-      docker_logout:
-        username: kapcareer@gmail.com
+      command: docker logout
+        
