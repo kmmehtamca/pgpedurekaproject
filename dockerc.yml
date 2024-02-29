@@ -20,11 +20,14 @@
         username: kapcareer@gmail.com
         password: pass12345
 
+    - name: Tag Docker image
+      command: docker tag kapilproject2:latest helloworld1977/helloworld:kapilproject2
+
     - name: Push Docker image to Docker Hub
       docker_image:
         name: helloworld1977/helloworld
         tag: kapilproject2
-        source: image
+        source: local
 
     - name: Log out from Docker Hub
       command: docker logout
