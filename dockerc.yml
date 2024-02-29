@@ -1,5 +1,5 @@
 ---
-- name: Build Docker image
+- name: Build and Push Docker image
   remote_user: ansible
   become: true
   hosts: docker_hosts
@@ -7,24 +7,24 @@
   tasks:
     - name: Build Docker image from Dockerfile
       docker_image:
-        name: kapilproject2:latest
+        name: kapilproject2
+        tag: latest
         source: build
         build:
           pull: no
           path: /home/jagenthome/workspace/jenkinscicd
           dockerfile: Dockerfile
 
-    - name: Login into the docker hub
-      docker_image:
+    - name: Login into Docker Hub
+      docker_login:
         username: kapcareer@gmail.com
         password: pass12345
-    - name: Build Docker image from Dockerfile
+
+    - name: Push Docker image to Docker Hub
       docker_image:
         name: helloworld1977/helloworld
-        tag : kapilproject2:latest
+        tag: kapilproject2
         source: image
-        
 
-    - name: log out from the docker
-      command: docker logout
-        
+    - name: Log out from Docker Hub
+      docker_logout:
