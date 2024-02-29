@@ -64,7 +64,7 @@
     - name: log out from the docker hub
       command: docker logout
       register: logout_result
-    - name: Debug output for push result
+    - name: Debug output for logout result
       debug:
         var: logout_result
 
