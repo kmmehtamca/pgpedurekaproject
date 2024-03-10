@@ -1,6 +1,6 @@
 ---
 - name: Build and Push Docker image
-  remote_user: ansible
+  remote_user: ansible1
   become: false
   hosts: docker_hosts
   vars:
