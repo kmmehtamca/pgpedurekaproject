@@ -25,18 +25,18 @@ pipeline {
         }
         stage('Compile') {
             steps {
-                sh '/opt/maven/bin/mvn clean'
-                sh '/opt/maven/bin/mvn compile'
+                sh '/opt/apache-maven-3.9.6/bin/mvn clean'
+                sh '/opt/apache-maven-3.9.6/bin/mvn compile'
             }
         }
         stage('Test') {
             steps {
-                sh '/opt/maven/bin/mvn test'
+                sh '/opt/apache-maven-3.9.6/bin/mvn test'
             }
         }
         stage('Package') {
             steps {
-                sh '/opt/maven/bin/mvn package'
+                sh '/opt/apache-maven-3.9.6/bin/mvn package'
             }
         }
         stage('Print IP Address') {
