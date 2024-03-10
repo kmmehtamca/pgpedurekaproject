@@ -53,7 +53,7 @@ pipeline {
                 script {
                     withCredentials([sshUserPrivateKey(credentialsId: 'ansible', keyFileVariable: 'SSH_PRIVATE_KEY')]) {
                         sh '''
-                            ansible-playbook -u ansible dockerc.yml --private-key=${SSH_PRIVATE_KEY} 
+                            ansible-playbook -u ansible1 dockerc.yml --private-key=${SSH_PRIVATE_KEY} 
                         '''
                     }
                 }
