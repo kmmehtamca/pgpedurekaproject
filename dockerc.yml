@@ -29,13 +29,13 @@
       debug:
         var: login_result
 
-    # - name: Tag Docker image
-    #   command: docker tag kapilproject2:latest helloworld1977/helloworld:kapilproject3
-    #   register: tag_result
+    - name: Tag Docker image
+      command: docker tag kapilproject2:latest helloworld1977/helloworld:kapilproject2
+      register: tag_result
 
-    # - name: Debug output for tag result
-    #   debug:
-    #     var: tag_result
+    - name: Debug output for tag result
+      debug:
+        var: tag_result
 
     - name: Push Docker image to Docker Hub
       docker_image:
