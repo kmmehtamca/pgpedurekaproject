@@ -3,8 +3,7 @@
   remote_user: ansible1
   become: false
   hosts: docker_hosts
-  vars:
-   ansible_ssh_private_key_file: /home/ansible/.ssh/y
+  
   tasks:
     - name: Build Docker image from Dockerfile
       docker_image:
