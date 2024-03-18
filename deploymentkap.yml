@@ -19,7 +19,7 @@ spec:
         app: abc-tech-kapapp
     spec:
       containers:
-      - image: helloworld1977/helloworld:kapilproject3
+      - image: helloworld1977/helloworld:kapilproject2
         name: app
 ---
 kind: Service
