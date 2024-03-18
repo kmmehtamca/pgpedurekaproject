@@ -31,5 +31,6 @@ spec:
   selector:
     app: abc-tech-kapapp
   ports:
-  - port: 31500 # Cluster port numbet
+  - port: 80# Cluster port numbet
     targetPort: 8080
+    nodeport: 31500
