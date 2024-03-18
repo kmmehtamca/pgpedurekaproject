@@ -8,6 +8,7 @@ pipeline {
         SSH_CREDENTIALS = credentials('ansible')
     }
  
+    stages {
         stage('Checkout') {
             steps {
                 checkout([$class: 'GitSCM',
@@ -31,7 +32,6 @@ pipeline {
                 sh '/opt/apache-maven-3.9.6/bin/mvn package'
             }
         }
-        
         stage('Push Docker image to Docker Hub') {
             steps {
                 script {
