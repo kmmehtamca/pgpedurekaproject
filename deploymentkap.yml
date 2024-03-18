@@ -1,0 +1,35 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: abctechnologies-kapdep
+spec:
+  replicas: 4
+  minReadySeconds: 45
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 2
+  selector:
+    matchLabels:
+      app: abc-tech-kapapp
+  template:
+    metadata:
+      labels:
+        app: abc-tech-kapapp
+    spec:
+      containers:
+      - image: helloworld1977/helloworld:kapilproject3
+        name: app
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: abc-tech-service
+spec:
+  type: NodePort
+  selector:
+    app: abc-tech-kapapp
+  ports:
+  - port: 31500 # Cluster port numbet
+    targetPort: 8080
