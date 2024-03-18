@@ -59,5 +59,13 @@ pipeline {
                 }
             }
         }
+        stage('Deploy Pods') {
+            steps {
+                script {
+                    // Apply the Kubernetes manifest file
+                    sh 'kubectl apply -f kappod.yml'
+                }
+            }
+        }
     }
 }
