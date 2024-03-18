@@ -63,7 +63,7 @@ pipeline {
             steps {
                 script {
                     // Apply the Kubernetes manifest file
-                    sh 'kubectl apply -f kappod.yml'
+                    sh 'kubectl apply -f deploymentkap.yml'
                 }
             }
         }
