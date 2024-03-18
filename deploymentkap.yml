@@ -5,11 +5,11 @@ metadata:
 spec:
   replicas: 4
   minReadySeconds: 45
-  #strategy:
-    #type: RollingUpdate
-    #rollingUpdate:
-      #maxUnavailable: 1
-      #maxSurge: 2
+  # strategy:
+  #   type: RollingUpdate
+  #   rollingUpdate:
+  #     maxUnavailable: 1
+  #     maxSurge: 2
   selector:
     matchLabels:
       app: abc-tech-kapapp
